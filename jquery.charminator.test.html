@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>jquery.charminator.js test</title>
+    <style>
+    	body {
+    		font-family: monospace
+    	}
+    </style>
+</head>
+<body>
+    <div id="chartest" style="width: 500px; margin: 0 auto; text-align: center">
+		<h2>jQuery.charminator Test</h2>	
+		<label for="charinput">Enter a char or string</label>
+		<input id="charinput" name="charinput" type="text" maxlength="20"/>
+		<br/>
+		<br/>
+		<span class="text">roll the shit out of text!</span>
+		<br/>
+		<br/>
+		<button class="roll">roll</button>
+		<br/>
+		<br/>
+		<span class="cbtext">
+			
+		</span>
+		<br/>
+		<br/>
+		<h4>Play with the parameters</h4>
+		<textarea rows="10" cols="40">
+$("span.text").charminator({
+	chars: ['a','b','c','d','e','f'],
+	duration: 15,
+	iterations: 30,
+	progressive: true,
+	complete: function() {
+		alert('callback!');
+	}
+});
+		</textarea>
+    </div>
+    <script src="http://code.jquery.com/jquery-1.8.2.js"></script>
+    <script src="jquery.charminator.js"></script>
+    <script>
+	$(function() {
+		$("#charinput").on("keyup", function(e) {
+			$("#chartest span.text").html($(this).val());
+		});
+		$("#chartest .roll").on("click", function() {
+			try {
+				eval($("textarea").val());
+			} catch(e) {
+				alert("Bad syntax");
+			}
+		});
+	});
+    </script>
+</body>
+</html>
