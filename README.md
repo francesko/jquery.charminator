@@ -1,9 +1,11 @@
 # jQuery.charminator
 
-jQuery.charminator is a plugin that lets you make awesome text randomization visual effects.
+jQuery.charminator is a plugin that lets you do awesome text randomization visual effects.
 Let's say you have a span with some text:
 
-> <span>text</span>
+<code>
+&lt;span id='yourelement-id'&gt;text&lt;/span&gt;
+</code>
 
 Suppose now that you want to have an animation where the text appears letter by letter.
 Moreover the new letter appearing has a cool randomization effect, changing quickly
@@ -18,15 +20,17 @@ http://francescomacri.net/projects/jquery-charminator/test.html
 
 ### Example
 
-> $('#yourelement-id').charminator({
->		chars: ['a','b','c','d'], //set of chars to use for randomization - default: lowercased alphabet
->		duration: 15, 			  //ms a letter stays before being changed - default: 15 
->		iterations: 30,			  //number of letter changes - default: 50
->		progressive: true,		  //turn on/off progressive behaviour - default: true
->		complete: function() {	  //callback - default: undefined
->			alert('callback!');
->		}
-> });
+<code>
+ $('#yourelement-id').charminator({<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;chars: ['a','b','c','d'], //set of chars to use for randomization - default: lowercased alphabet<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;duration: 15, 			  //ms a letter stays before being changed - default: 15 <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;iterations: 30,			  //number of letter changes - default: 50 <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;progressive: true,		  //turn on/off progressive behaviour - default: true <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;complete: function() {	  //callback - default: undefined <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;alert('callback!'); <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;} <br/>
+ });
+</code>
 
 All parameters are optional. Whenever a parameter is missing, default values apply.
 
