@@ -16,7 +16,8 @@
 			A jQuery plugin to do crazy stuff with text!
 			Try it out in the test below or visit the 
 			<a href="https://github.com/francesko/jquery.charminator" target="_blank">github page</a> for more
-			info. If you are too lazy to click a link, download the source directly <a href="jquery.charminator.js">here</a>. 
+			info. If you are too lazy to click a link, download the source directly <a href="jquery.charminator.js">here</a>
+			or get the minified version <a href="jquery.charminator.min.js">here</a>. 
 		</div>
 		<h3>Test</h3>
 		<label for="charinput">Enter a char or string</label>
@@ -27,6 +28,9 @@
 		<br/>
 		<br/>
 		<button class="roll">roll</button>
+		<br/>
+		<br/>
+		<small>(wait for the animation to finish before pressing again or strange things may happen :P)</small>
 		<br/>
 		<br/>
 		<br/>
@@ -65,13 +69,11 @@ $("span.text").charminator({
 			$("#chartest span.text").html($(this).val());
 		});
 		$("#chartest .roll").on("click", function() {
-			$(this).attr('disabled','disabled');
 			try {
 				eval($("textarea").val());
 			} catch(e) {
 				alert("Bad syntax");
 			}
-			$(this).removeAttr('disabled');
 		});
 	});
     </script>
