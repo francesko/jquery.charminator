@@ -17,7 +17,7 @@
 			chars: '0123456789abcdefghijklmnopqrstuvwyz'.split(''),
 			duration: 15,
 			iterations: 50,
-			progressive: false,
+			progressive: true,
 			complete: undefined
 		},
 		opts = $.extend({}, defaults, options);
