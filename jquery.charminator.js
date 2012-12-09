@@ -25,47 +25,47 @@
 
 		return this.each(function() {
 			var end = $(this).html(),
-				roll = function($el, iters, end, cb) {
-					if(iters === opts.iterations) {
-						$el.html(end);
-						if(opts.progressive) {
-							return (cb)?cb():undefined;
-						}
-						elCnt--;
-						return ((elCnt===0)?((cb)?cb():undefined):undefined);
-					} else {
-						next = (function(i) {
-							var random = '',
-								len = opts.chars.length;
-							while(i--) {  
-								random += opts.chars[Math.floor(Math.random()*len)];	
-							}
-							return random;
-						}(end.length));
-						$el.html(next);
-						return setTimeout(function() {
-							roll($el,iters+1, end, cb);
-						}, opts.duration);
+			roll = function($el, iters, end, cb) {
+				if(iters === opts.iterations) {
+					$el.html(end);
+					if(opts.progressive) {
+						return (cb)?cb():undefined;
 					}
-				};
+					elCnt--;
+					return ((elCnt===0)?((cb)?cb():undefined):undefined);
+				} else {
+					next = (function(i) {
+						var random = '',
+							len = opts.chars.length;
+						while(i--) {  
+							random += opts.chars[Math.floor(Math.random()*len)];	
+						}
+						return random;
+					}(end.length));
+					$el.html(next);
+					return setTimeout(function() {
+						roll($el,iters+1, end, cb);
+					}, opts.duration);
+				}
+			};
 			
 			if(opts.progressive) {
 				$(this).html('');
 				var self = this,
-					chars = end.split(''),
-					progRoll = function(i, cb) {
-						if(i >= chars.length) {
-							$(self).html($(self).text());
-							elCnt = elCnt-1;
-							return ((elCnt===0)?((cb)?cb():undefined):undefined);
-						} else {
-							var span = $('<span>'+chars[i]+'</span>');
-							$(self).append(span);
-							roll($(span), 0, chars[i], function() {
-								progRoll(i+1, cb);
-							});
-						}
-					};
+				chars = end.split(''),
+				progRoll = function(i, cb) {
+					if(i >= chars.length) {
+						$(self).html($(self).text());
+						elCnt = elCnt-1;
+						return ((elCnt===0)?((cb)?cb():undefined):undefined);
+					} else {
+						var span = $('<span>'+chars[i]+'</span>');
+						$(self).append(span);
+						roll($(span), 0, chars[i], function() {
+							progRoll(i+1, cb);
+						});
+					}
+				};
 				return progRoll(0, opts.complete);
 			} 
 			return roll($(this), 0, end, opts.complete);	

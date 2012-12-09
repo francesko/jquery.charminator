@@ -11,20 +11,24 @@
 </head>
 <body>
     <div id="chartest" style="width: 500px; margin: 0 auto; text-align: center">
-		<h2>jQuery.charminator Test</h2>	
+		<h2>jQuery.charminator</h2>
+		<div class="description">
+			A jQuery plugin to do crazy stuff with text!
+			Try it out in the test below or visit the 
+			<a href="https://github.com/francesko/jquery.charminator" target="_blank">github page</a> for more
+			info. If you are too lazy to click a link, download the source directly <a href="jquery.charminator.js">here</a>. 
+		</div>
+		<h3>Test</h3>
 		<label for="charinput">Enter a char or string</label>
 		<input id="charinput" name="charinput" type="text" maxlength="20"/>
 		<br/>
 		<br/>
-		<span class="text">roll the shit out of text!</span>
+		<span class="text" style="font-size: 25px">roll the shit out of text!</span>
 		<br/>
 		<br/>
 		<button class="roll">roll</button>
 		<br/>
 		<br/>
-		<span class="cbtext">
-			
-		</span>
 		<br/>
 		<br/>
 		<h4>Play with the parameters</h4>
@@ -39,6 +43,19 @@ $("span.text").charminator({
 	}
 });
 		</textarea>
+    <br/>
+    <br/>
+    <div>
+    	Note that this plugin works better with monospaced font families as
+    	the size of all letters are the same (this avoids flickering of the text
+    	when changing quickly from one letter to another).
+    	<br/>
+    	<br/>
+    	DISCLAIMER: As of version 0.0.1 the html content of the element you are passing
+    	is flatten, meaning that elements you use the plugin with MUST contain only
+    	text and not other html childnodes if you don't want undesired effects (this may change
+    	in a close future).
+    </div>
     </div>
     <script src="http://code.jquery.com/jquery-1.8.2.js"></script>
     <script src="jquery.charminator.js"></script>
@@ -48,11 +65,13 @@ $("span.text").charminator({
 			$("#chartest span.text").html($(this).val());
 		});
 		$("#chartest .roll").on("click", function() {
+			$(this).attr('disabled','disabled');
 			try {
 				eval($("textarea").val());
 			} catch(e) {
 				alert("Bad syntax");
 			}
+			$(this).removeAttr('disabled');
 		});
 	});
     </script>

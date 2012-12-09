@@ -7,7 +7,7 @@ Let's say you have a span with some text:
 &lt;span id='yourelement-id'&gt;text&lt;/span&gt;
 </code>
 
-Suppose now that you want to have an animation where the text appears letter by letter.
+$('#yourelement-id').charminator() will make your text appear gradually letter by letter, instead of being displayed all at once.
 Moreover the new letter appearing has a cool randomization effect, changing quickly
 random chars taken from a set of letters you give as parameters (or the whole alphabet by default).
 You can also turn off the progressive behavior and get random strings of your original text size
