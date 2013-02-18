@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>ENTER THE MATRIX</title>
+    <style>
+	html, body {
+		width: 100%;
+		height: 100%
+	}
+	body {
+		margin: 0;
+		padding: 0;
+		overflow: hidden
+	}
+    	.theMatrix {
+		width: 100%;
+		height: 100%;
+		background-color: #000;
+		color: #0f0;
+		font-family: monospace
+	}
+	.text {
+		display: inline-block;
+		word-wrap: break-word;
+		vertical-align: top;
+		margin: 0 10px 0 10px;
+		position: absolute
+	}
+    </style>
+</head>
+<body>
+    <div class="theMatrix">
+	
+    </div>
+    <script src="../../js/main.js"></script>
+    <script>
+	$(function() {
+		var genTextDiv = function() {
+			var fontSize = (10+(Math.floor(Math.random()*20))),
+			    $div = $('<div></div>');
+			$div.addClass('text').css({
+				'top': (Math.floor(Math.random()*$(window).height())),
+				'left': (Math.floor(Math.random()*$(window).width())),
+				'font-size': fontSize, 
+				'width': (Math.floor(Math.random()*fontSize)), 
+				'margin-top':(Math.floor(Math.random()*$(window).height()/3))-100
+			});
+			var randomWord = (function(){
+				var word = '',
+				    len = (5+(Math.floor(Math.random()*30)));
+				while(len--) {
+				    word += String.fromCharCode(35+(Math.floor(Math.random()*91)));
+				}
+				return word;
+			}());
+			$div.html(randomWord);
+			
+			return $div;
+		};
+
+		var times = 50;
+		while(times--) {
+			var $div = genTextDiv();
+			$('.theMatrix').append($div);
+		}
+		$('.text').each(function(i,el) {
+			var main = function($el) {
+				$el.charminator({
+					duration: 5,
+					iterations: 10,
+					complete: function() {
+						var $div = genTextDiv();
+						$('.theMatrix').append($div);
+						$el.remove();						
+						main($div);	
+					}
+				});
+			};			
+			main($(el));
+		});	
+		// var main = function() {
+			// $('.theMatrix').html('');			
+			// var times = 50;
+			// while(times--) {
+				// var $div = genTextDiv();
+				// $('.theMatrix').append($div);
+			// }			
+			// $('.text').charminator({
+				// duration: 5,
+				// iterations: 10,
+				// complete: main
+			// });
+		// };
+		// main();
+	});
+    </script>
+</body>
+</html>
