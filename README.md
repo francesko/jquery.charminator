@@ -1,6 +1,6 @@
-# jQuery.charminator
+# jQuery Charminator
 
-jQuery.charminator is a plugin that lets you do awesome text randomization visual effects.
+Charminator is a jQuery plugin that lets you do awesome text randomization visual effects.
 Let's say you have a span with some text:
 
 
