@@ -31,11 +31,10 @@ And of course you can also pass a complete callback to do some stuff once the an
 All parameters are optional. Whenever a parameter is missing, default values apply.
 
 Note that this plugin works better with monospaced font families as
-the size of all letters are the same (this avoids flickering of the text
-when changing quickly from one letter to another).
+all letters have the same size (this avoids text flickering
+when changing from one letter to another).
 
 ### DISCLAIMER
-As of version 0.0.1 the html content of the element you are passing
-is flatten, meaning that elements you use the plugin with MUST contain only
-text and not other html childnodes if you don't want undesired effects (this may change
-in a close future).
+As of version 0.0.1 the html content of elements you use the plugin with
+gets flatten, meaning that such elements MUST contain only text and not other 
+html childnodes if you don't want undesired effects.
